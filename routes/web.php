@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/getorder', function (Request $request) {
+	$order_id = $request->input("orderid");
+	return  Woocommerce::get('orders/'.$order_id);
 });
 
 Auth::routes(['verify' => true]);
@@ -38,3 +44,5 @@ Route::post(
 )->name('io_generator_builder_generate_from_file');
 
 Route::resource('orders', 'OrderController');
+
+Route::resource('vouchers', 'VoucherController');

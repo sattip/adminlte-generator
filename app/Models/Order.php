@@ -27,6 +27,7 @@ class Order extends Model
 {
 
     public $table = 'orders';
+    public $timestamps = false;
     
 
 
@@ -78,5 +79,22 @@ class Order extends Model
         
     ];
 
+    protected $appends = [
+        'is_paid'
+    ];
+
+    public function getIsPaidAttribute()
+    {
+        if ($this->vouchers()->first()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+
+    public function vouchers() {
+        return $this->belongsTo(\App\Models\Voucher::class, 'voucher', 'voucher');
+    }
     
 }

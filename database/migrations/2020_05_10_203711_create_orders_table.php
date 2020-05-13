@@ -14,7 +14,7 @@ class CreateOrdersTable extends Migration
     public function up()
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->integer('id');
+            $table->id();
             $table->integer('order_id');
             $table->text('voucher');
             $table->text('couriername');
@@ -23,7 +23,7 @@ class CreateOrdersTable extends Migration
             $table->text('streetaddress');
             $table->integer('zipcode');
             $table->text('city');
-            $table->integer('phonenumber');
+            $table->text('phonenumber');
             $table->date('datecreated');
             $table->text('orderprice');
             $table->text('status');
