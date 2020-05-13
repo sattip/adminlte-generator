@@ -54,10 +54,7 @@ class VoucherController extends AppBaseController
         $input = $request->all();
 
         $vouchers = $input["voucher"];
-        $vouchers = trim($vouchers);
-        $textAr = explode("\n", $vouchers);  // remove the last \n or whitespace character
-        $textAr = array_filter($textAr, 'trim'); // remove any extra \r characters left behind
-
+        $textAr = explode(PHP_EOL, $vouchers);
         //store each line to different db entry
         foreach ($textAr as $line) {
             $voucher = $this->voucherRepository->create([
