@@ -1,5 +1,5 @@
 <li class="{{ Request::is('home*') ? 'active' : '' }}">
-    <a href="{{ route('home) }}"><i class="fa fa-edit"></i><span>Dashboard</span></a>
+    <a href="{{ route('home') }}"><i class="fa fa-edit"></i><span>Dashboard</span></a>
 </li>
 
 <li class="{{ Request::is('orders*') ? 'active' : '' }}">
