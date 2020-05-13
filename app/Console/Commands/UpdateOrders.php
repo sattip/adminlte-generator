@@ -48,7 +48,7 @@ class UpdateOrders extends Command
             \Woocommerce::put('orders/'.$order->order_id, $data);
             //update order status
             $order->status = "completed";
-            $order->status = true;
+            $order->synced = true;
             $order->save();
 
         }
