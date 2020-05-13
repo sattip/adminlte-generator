@@ -55,7 +55,7 @@ class SyncOrders extends Command
      */
     public function handle()
     {
-        $today = Carbon::today()->subWeek()->format(\DateTime::ISO8601);
+        $today = Carbon::today()->subMonth()->format(\DateTime::ISO8601);
         $today = explode("+", $today)[0];
         $this->info($today);
 
@@ -78,6 +78,12 @@ class SyncOrders extends Command
             $json_order = json_encode($orders);
             $this->info($json_order);
             foreach ($orders as $order) {
+                //find order
+                $found = Order::where('order_id', $order["id"])->exists();
+                if ($found) {
+                    continue;
+                }
+
                 $new_order = new Order();
                 $new_order->order_id = $order["id"];
                 $new_order->firstname = $order["billing"]["first_name"];
