@@ -21,7 +21,7 @@
 
             <div class="info-box-content">
               <span class="info-box-text">ELTA Courier</span>
-              <span class="info-box-number">{!! $acs !!} </span>
+              <span class="info-box-number">{!! $elta !!} </span>
             </div>
             <!-- /.info-box-content -->
           </div>
