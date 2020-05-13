@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Order;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $acs_sum = Order::whereHas('vouchers')->where('courier_name', 'ACS Courier')->sum();
+        $elta_sum = Order::whereHas('vouchers')->where('courier_name', 'ELTA Courier')->sum();
+        return view('home')->with(
+            [
+                "acs" => $acs_sum,
+                "elta" => $elta_sum
+            ]
+        );
     }
 }

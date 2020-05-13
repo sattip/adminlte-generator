@@ -62,7 +62,8 @@ class SyncOrders extends Command
         $params = [
             "per_page" => 10,
             "page" => 1,
-            'after' => $today
+            'after' => $today,
+            "status" => "send-to-acs"
         ];
 
 
