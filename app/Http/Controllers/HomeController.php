@@ -24,8 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $acs_sum = Order::whereHas('vouchers')->where('courier_name', 'ACS Courier')->sum('orderprice');
-        $elta_sum = Order::whereHas('vouchers')->where('courier_name', 'ELTA Courier')->sum('orderprice');
+        $acs_sum = Order::whereHas('vouchers')->where('couriername', 'ACS Courier')->sum('orderprice');
+        $elta_sum = Order::whereHas('vouchers')->where('couriername', 'ELTA Courier')->sum('orderprice');
         return view('home')->with(
             [
                 "acs" => $acs_sum,
