@@ -58,7 +58,7 @@ class VoucherController extends AppBaseController
         //store each line to different db entry
         foreach ($textAr as $line) {
             $voucher = $this->voucherRepository->create([
-                "voucher" => $line,
+                "voucher" => rtrim($line),
                 "courier_name" => $input["courier_name"]
             ]);
         }
