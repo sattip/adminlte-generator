@@ -46,6 +46,10 @@ class UpdateOrders extends Command
                 'status' => 'completed'
             ];
             \Woocommerce::put('orders/'.$order->order_id, $data);
+            //update order status
+            $order->status = "completed";
+            $order->status = true;
+            $order->save();
 
         }
         $this->info(json_encode($orders));
