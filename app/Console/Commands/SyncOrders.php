@@ -55,7 +55,7 @@ class SyncOrders extends Command
      */
     public function handle()
     {
-        $today = Carbon::today()->subMonth()->format(\DateTime::ISO8601);
+        $today = Carbon::today()->subMonths(2)->format(\DateTime::ISO8601);
         $today = explode("+", $today)[0];
         $this->info($today);
 
